@@ -41,7 +41,9 @@ class MiniChart extends React.Component {
       activePointRadius,
       activePointColor,
       labelFontSize,
-      labelFormat
+      labelFormat,
+      fill,
+      fillOpacity
     } = this.props;
 
     const edgeFactor = Math.max(Math.ceil(strokeWidth / 2), activePointRadius);
@@ -80,7 +82,8 @@ class MiniChart extends React.Component {
         points={param}
         strokeLinecap="round"
         strokeLinejoin="round"
-        fill="none"
+        fill={fill}
+        fillOpacity={fillOpacity}
         stroke={strokeColor}
         strokeWidth={strokeWidth}
       />;
@@ -151,7 +154,9 @@ MiniChart.defaultProps = {
   activePointRadius: 3,
   labelFontSize: 11,
   activePointColor: '#039BE5',
-  labelFormat: (value) => value
+  labelFormat: (value) => value,
+  fill: "none",
+  fillOpacity: 1
 };
 
 MiniChart.propTypes = {
@@ -164,7 +169,9 @@ MiniChart.propTypes = {
   activePointRadius: PropTypes.number,
   activePointColor: PropTypes.string,
   labelFontSize: PropTypes.number,
-  labelFormat: PropTypes.function
+  labelFormat: PropTypes.function,
+  fill: PropTypes.string,
+  fillOpacity: PropTypes.number
 };
 
 export default MiniChart;
