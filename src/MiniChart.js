@@ -93,7 +93,8 @@ class MiniChart extends React.Component {
         cx={this.points[this.state.aIdx].x}
         cy={this.points[this.state.aIdx].y}
         r={activePointRadius} /> : '';
-
+console.log(this.props.dataSet[this.state.aIdx])
+console.log(labelFormat)
     const tip = this.state.aIdx >= 0 ?
       <span
         style={{
