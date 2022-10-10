@@ -43,7 +43,9 @@ class MiniChart extends React.Component {
       labelFontSize,
       labelFormat,
       fill,
-      fillOpacity
+      fillOpacity,
+      loading,
+      Loader
     } = this.props;
 
     const edgeFactor = Math.max(Math.ceil(strokeWidth / 2), activePointRadius);
@@ -126,19 +128,26 @@ class MiniChart extends React.Component {
         }}
         onMouseLeave={this.handleMouseLeave}
       >
-        <svg
-          onMouseMove={this.handleMouseMove}
-          style={{ transition: 'all 0.3s', display: 'block' }}
-          width={width}
-          height={height}
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          viewBox={viewBox}
-        >
-          {polyline}
-          {activePoint}
-        </svg>
-        {tip}
+        {loading
+          ? (
+            <div>
+              <svg
+                onMouseMove={this.handleMouseMove}
+                style={{ transition: 'all 0.3s', display: 'block' }}
+                width={width}
+                height={height}
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+                viewBox={viewBox}
+              >
+                {polyline}
+                {activePoint}
+              </svg>
+              {tip}
+            </div>
+          )
+          : Loader
+        }
       </div>
     )
   }
@@ -156,7 +165,9 @@ MiniChart.defaultProps = {
   activePointColor: '#039BE5',
   labelFormat: (value) => value,
   fill: "none",
-  fillOpacity: 1
+  fillOpacity: 1,
+  loading: false,
+  Loader: null
 };
 
 MiniChart.propTypes = {
@@ -171,7 +182,9 @@ MiniChart.propTypes = {
   labelFontSize: PropTypes.number,
   labelFormat: PropTypes.func,
   fill: PropTypes.string,
-  fillOpacity: PropTypes.number
+  fillOpacity: PropTypes.number,
+  loading: PropTypes.bool,
+  Loader: PropTypes.Component
 };
 
 export default MiniChart;
