@@ -169,7 +169,7 @@ MiniChart.propTypes = {
   activePointRadius: PropTypes.number,
   activePointColor: PropTypes.string,
   labelFontSize: PropTypes.number,
-  labelFormat: PropTypes.function,
+  labelFormat: PropTypes.func,
   fill: PropTypes.string,
   fillOpacity: PropTypes.number
 };
