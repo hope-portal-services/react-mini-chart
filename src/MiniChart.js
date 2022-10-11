@@ -122,7 +122,8 @@ class MiniChart extends React.Component {
       <div
         style={{
           display: 'inline-block',
-          position: 'relative'
+          position: 'relative',
+          width: '100%'
         }}
         onMouseLeave={this.handleMouseLeave}
       >
